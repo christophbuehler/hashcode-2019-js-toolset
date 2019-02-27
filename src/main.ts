@@ -23,10 +23,8 @@ export function sum(a: number, b: number) {
 /**
  * Working with files:
  */
-
 const bSmall = readFileSync('assets/b_small.in');
 const config = toConfig(bSmall);
-// console.log('toConfig', toConfig(bSmall));
 writeFileSync('out/test.txt', config);
 
 /**

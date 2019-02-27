@@ -37,6 +37,8 @@
     "@types/chalk": "^2.2.0",
     "@types/mathjs": "^5.0.0",
     "@types/moment": "^2.13.0",
+    "mocha": "^5.2.0",
+    "chai": "^4.1.2",
     "chalk": "^2.4.2",
     "d3-node": "^2.1.0",
     "fs-extra": "^7.0.1",

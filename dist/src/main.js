@@ -20,7 +20,6 @@ exports.sum = sum;
  */
 const bSmall = file_operations_1.readFileSync('assets/b_small.in');
 const config = toConfig(bSmall);
-// console.log('toConfig', toConfig(bSmall));
 file_operations_1.writeFileSync('out/test.txt', config);
 /**
  * Raw input to config.

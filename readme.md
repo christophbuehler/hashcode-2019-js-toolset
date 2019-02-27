@@ -33,6 +33,7 @@ Starter project for the Google Hash Code 2019 competition.
 - Watch TS: `tsc -w`
 - Run code: `ctrl + shift + b`
 - Run tests: `npm test`
+- Run debugger: `f5`
 
 ---
 
