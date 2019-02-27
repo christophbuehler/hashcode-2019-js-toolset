@@ -1,9 +1,9 @@
 import chalk from 'chalk';
-import { User, user } from 'environment';
 import * as moment from 'moment';
 import * as mainChristoph from './2cb/main';
 import * as mainDaniel from './2dm/main';
 import * as mainLuca from './2lt/main';
+import { User, user } from './environment';
 import { chart } from './libs/charting';
 import { readFileSync, writeFileSync } from './libs/file-operations';
 
