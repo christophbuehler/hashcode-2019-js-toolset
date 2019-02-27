@@ -2,9 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const chalk_1 = require("chalk");
 const moment = require("moment");
-console.log(chalk_1.default.blue(`~ Google Hash Code 2019 [build from ${moment().format('hh:mm:ss')}] ~`));
+const charting_1 = require("./libs/charting");
+const file_operations_1 = require("./libs/file-operations");
+console.log(chalk_1.default.blue(`~ Google Hash Code 2019 [build from ${moment().format('HH:mm:ss')}] ~`));
+charting_1.chart();
 /**
- * The sum of two values.
+ * The sum of two values (for testing).
  * @param a val1
  * @param b val2
  */
@@ -15,10 +18,9 @@ exports.sum = sum;
 /**
  * Working with files:
  */
-const file_operations_1 = require("./libs/file-operations");
 const bSmall = file_operations_1.readFileSync('assets/b_small.in');
 const config = toConfig(bSmall);
-console.log('toConfig', toConfig(bSmall));
+// console.log('toConfig', toConfig(bSmall));
 file_operations_1.writeFileSync('out/test.txt', config);
 /**
  * Raw input to config.

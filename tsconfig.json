@@ -1,13 +1,16 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "esModuleInterop": true,
         "target": "es2015",
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "moduleResolution": "node",
         "sourceMap": true,
         "outDir": "dist",
         "baseUrl": ".",
+        "allowJs": true,
+        "typeRoots": [
+            "node_modules/@types",
+        ],
         "paths": {
             "*": [
                 "node_modules/*",
@@ -16,6 +19,6 @@
         }
     },
     "include": [
-        "src/**/*"
+        "src/main.ts"
     ]
 }
