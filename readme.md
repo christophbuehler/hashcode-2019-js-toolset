@@ -22,7 +22,6 @@ Starter project for the Google Hash Code 2019 competition.
 
 - NodeJS >= v10.15.0: `node -v`
 - TSLint: `npm install -g tslint`
-- Webpack: `npm install -g webpack`
 
 ## 2. VSCode Extensions
 
