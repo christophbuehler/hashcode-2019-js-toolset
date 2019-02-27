@@ -8,12 +8,14 @@ This project provides:
 - File handling (read and write).
 - jsnumpy\
   https://www.npmjs.com/package/jsnumpy
-- chalk\
-  https://www.npmjs.com/package/chalk
 - Math.js\
   http://mathjs.org/
-- Testing (mocha & chai)
-- plotting lib?
+- Testing (mocha & chai).\
+  https://www.npmjs.com/package/mocha\
+  https://www.npmjs.com/package/chai
+- Plotting / canvas libs?
+- chalk\
+  https://www.npmjs.com/package/chalk
 
 ## 1. Global Dependencies
 
