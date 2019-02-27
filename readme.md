@@ -1,8 +1,8 @@
 # Google Hash Code 2019 TS Project
 
-Starter project for the Google Hash Code 2019 competition.\
+Starter project for the Google Hash Code 2019 competition.
 
-### This project provides:
+### This project provides
 
 - TypeScript compilation.
 - Linting and code formatting (on save or `shift + alt + f`).
