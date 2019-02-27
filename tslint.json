@@ -8,6 +8,8 @@
         "no-implicit-dependencies": true,
         "no-submodule-imports": false,
         "no-console": false,
+        "interface-name": false,
+        "curly": false,
         "max-line-length": false,
         "no-bitwise": [
             true

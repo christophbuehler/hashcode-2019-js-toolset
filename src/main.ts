@@ -1,5 +1,7 @@
 import chalk from 'chalk';
 import * as moment from 'moment';
+import ndarray = require('ndarray');
+import * as nj from 'numjs';
 import * as mainChristoph from './2cb/main';
 import * as mainDaniel from './2dm/main';
 import * as mainLuca from './2lt/main';
@@ -13,12 +15,18 @@ console.log(
   ),
 );
 
+/**
+ * Working with files:
+ */
+const bSmall = readFileSync('assets/b_small.in');
+const config = toConfig(bSmall);
+
 switch (user) {
   case User.DANIEL:
     mainDaniel.main();
     break;
   case User.LUCA:
-    mainLuca.main();
+    mainLuca.main(config);
     break;
   case User.CHRISTOPH:
     mainChristoph.main();
@@ -36,29 +44,35 @@ export function sum(a: number, b: number) {
   return a + b;
 }
 
-/**
- * Working with files:
- */
-const bSmall = readFileSync('assets/b_small.in');
-const config = toConfig(bSmall);
-
-writeFileSync('out/test.txt', config);
+// writeFileSync('out/test.txt', config);
 
 /**
  * Raw input to config.
  * @param raw raw input string from file
  */
-function toConfig(raw: string) {
+function toConfig(raw: string): Config {
   const arr = raw.split('\r\n');
   const header = arr[0].split(' ');
 
   arr.splice(0, 1);
 
+  const rowCount = parseInt(header[0], 10);
+  const colCount = parseInt(header[1], 10);
+  const dataOneDim = arr.join('').split('');
+
   return {
-    rowCound: header[0],
-    colCount: header[1],
-    minOfEach: header[2],
-    maxSquares: header[3],
-    squares: arr,
+    rowCount,
+    colCount,
+    minOfEach: parseInt(header[2], 10),
+    maxSquares: parseInt(header[3], 10),
+    squares: nj.array(dataOneDim).reshape(rowCount, colCount),
   };
+}
+
+export interface Config {
+  rowCount: number;
+  colCount: number;
+  minOfEach: number;
+  maxSquares: number;
+  squares: ndarray<string>;
 }

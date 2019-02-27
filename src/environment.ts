@@ -4,4 +4,4 @@ export enum User {
   LUCA,
 }
 
-export const user: User = User.DANIEL;
+export const user: User = User.LUCA;
