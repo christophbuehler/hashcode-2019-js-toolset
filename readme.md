@@ -12,7 +12,7 @@ Starter project for the Google Hash Code 2019 competition.
 - Math.js\
   http://mathjs.org/
 - Testing (mocha & chai).\
-  https://www.npmjs.com/package/mocha\
+  https://www.npmjs.com/package/mocha \
   https://www.npmjs.com/package/chai
 - Plotting / canvas libs?
 - chalk\
