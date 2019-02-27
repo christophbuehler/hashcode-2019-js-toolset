@@ -1,4 +1,4 @@
-# Google Hash Code 2019 TS Toolset
+# Google Hash Code 2019 TS Project
 
 Starter project for the Google Hash Code 2019 competition.\
 This project provides:
