@@ -12,6 +12,7 @@ This project provides:
   https://www.npmjs.com/package/chalk
 - Math.js\
   http://mathjs.org/
+- Testing (mocha & chai)
 - plotting lib?
 
 ## 1. Global Dependencies
