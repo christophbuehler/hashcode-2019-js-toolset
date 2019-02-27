@@ -1,0 +1,40 @@
+{
+  "name": "hashcode-2019-ts-toolset",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc --watch",
+    "tslint": "tslint --project '.'",
+    "run": "node dist/main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christophbuehler/hashcode-2019-ts-toolset.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christophbuehler/hashcode-2019-ts-toolset/issues"
+  },
+  "homepage": "https://github.com/christophbuehler/hashcode-2019-ts-toolset#readme",
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.5",
+    "@types/node": "^11.9.5",
+    "tslint": "^5.13.0",
+    "typescript": "^2.5.3"
+  },
+  "dependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/mathjs": "^5.0.0",
+    "@types/moment": "^2.13.0",
+    "chalk": "^2.4.2",
+    "fs-extra": "^7.0.1",
+    "mathjs": "^5.5.0",
+    "moment": "^2.24.0"
+  }
+}
