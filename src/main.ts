@@ -1,5 +1,9 @@
 import chalk from 'chalk';
-import moment = require('moment');
+import * as moment from 'moment';
+import * as mainChristoph from './2cb/main';
+import * as mainDaniel from './2dm/main';
+import * as mainLuca from './2lt/main';
+import { user, User } from './environment';
 import { chart } from './libs/charting';
 import { readFileSync, writeFileSync } from './libs/file-operations';
 
@@ -8,6 +12,18 @@ console.log(
     `~ Google Hash Code 2019 [build from ${moment().format('HH:mm:ss')}] ~`,
   ),
 );
+
+switch (user) {
+  case User.DANIEL:
+    mainDaniel.main();
+    break;
+  case User.LUCA:
+    mainLuca.main();
+    break;
+  case User.CHRISTOPH:
+    mainChristoph.main();
+    break;
+}
 
 chart();
 
@@ -25,6 +41,7 @@ export function sum(a: number, b: number) {
  */
 const bSmall = readFileSync('assets/b_small.in');
 const config = toConfig(bSmall);
+
 writeFileSync('out/test.txt', config);
 
 /**

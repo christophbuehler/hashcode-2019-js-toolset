@@ -2,9 +2,24 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const chalk_1 = require("chalk");
 const moment = require("moment");
+const mainChristoph = require("./2cb/main");
+const mainDaniel = require("./2dm/main");
+const mainLuca = require("./2lt/main");
+const environment_1 = require("./environment");
 const charting_1 = require("./libs/charting");
 const file_operations_1 = require("./libs/file-operations");
 console.log(chalk_1.default.blue(`~ Google Hash Code 2019 [build from ${moment().format('HH:mm:ss')}] ~`));
+switch (environment_1.user) {
+    case environment_1.User.DANIEL:
+        mainDaniel.main();
+        break;
+    case environment_1.User.LUCA:
+        mainLuca.main();
+        break;
+    case environment_1.User.CHRISTOPH:
+        mainChristoph.main();
+        break;
+}
 charting_1.chart();
 /**
  * The sum of two values (for testing).
