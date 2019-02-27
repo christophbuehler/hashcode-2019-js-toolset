@@ -1,14 +1,7 @@
 "use strict";
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = __importStar(require("fs-extra"));
-const path = __importStar(require("path"));
+const fs = require("fs-extra");
+const path = require("path");
 /**
  * Read a file async.
  * @param fileName file name
@@ -35,14 +28,15 @@ function readFileSync(fileName) {
 }
 exports.readFileSync = readFileSync;
 /**
- * Write file sync.
+ * Write file sync. If data is an array or an object,
+ * it will be converted to json before writing.
  * @param filePath file name
  * @param data data to write
  */
 function writeFileSync(filePath, data) {
     const dirname = path.dirname(filePath);
     fs.ensureDir(dirname);
-    fs.writeFileSync(filePath, data);
+    fs.writeFileSync(filePath, typeof data === 'object' ? JSON.stringify(data) : data);
 }
 exports.writeFileSync = writeFileSync;
 //# sourceMappingURL=file-operations.js.map

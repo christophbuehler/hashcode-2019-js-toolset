@@ -26,12 +26,16 @@ export function readFileSync(fileName: string): string {
 }
 
 /**
- * Write file sync.
+ * Write file sync. If data is an array or an object,
+ * it will be converted to json before writing.
  * @param filePath file name
  * @param data data to write
  */
 export function writeFileSync(filePath: string, data: any): void {
   const dirname = path.dirname(filePath);
   fs.ensureDir(dirname);
-  fs.writeFileSync(filePath, data);
+  fs.writeFileSync(
+    filePath,
+    typeof data === 'object' ? JSON.stringify(data) : data,
+  );
 }

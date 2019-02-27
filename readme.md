@@ -28,6 +28,7 @@ This project provides:
 
 - Watch TS: `npm run watch`
 - Run code: `ctrl + shift + b`
+- Run tests: `npm test`
 
 ---
 
