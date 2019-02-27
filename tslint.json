@@ -5,6 +5,7 @@
             true,
             "single"
         ],
+        "no-implicit-dependencies": true,
         "no-submodule-imports": false,
         "no-console": false,
         "max-line-length": false,
