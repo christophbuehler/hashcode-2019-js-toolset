@@ -10,7 +10,7 @@
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
     "watch": "tsc --watch",
     "tslint": "tslint --project '.'",
-    "run": "node dist/src/main"
+    "run": "node dist/main"
   },
   "repository": {
     "type": "git",
