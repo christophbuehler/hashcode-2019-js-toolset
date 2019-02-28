@@ -16,7 +16,7 @@ console.log(
 
 const configNames = [
   'a_example.txt',
-  'b_lovely_landscapes.txt',
+  // 'b_lovely_landscapes.txt',
   'c_memorable_moments.txt',
   'd_pet_pictures.txt',
   'e_shiny_selfies.txt',

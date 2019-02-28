@@ -39,7 +39,7 @@ export function sortSlides(slides: Slide[]): Slide[] {
     const tags = slide.tags;
     const sorted = slides
       .filter((a) => !a.predecessor)
-      .find((a) => scoreTags(tags, a.tags) > 1);
+      .find((a) => scoreTags(tags, a.tags) > 0);
     return sorted ? [sorted] : [];
   }
 
@@ -58,6 +58,7 @@ export function sortSlides(slides: Slide[]): Slide[] {
     } else {
       const unoccupiedSlide = slides.find((slide) => !slide.predecessor);
       if (unoccupiedSlide) {
+        unoccupiedSlide.predecessor = currentSlide;
         arrangedSlides.push(unoccupiedSlide);
       } else {
         console.log(chalk.magenta('Done sorty mi frend.'));
