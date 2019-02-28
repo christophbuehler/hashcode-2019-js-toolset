@@ -3,6 +3,7 @@
  * @param grid a grid
  * @param rootX cell x
  * @param rootY cell y
+ * @param includeDiagonal include diagonal cells
  */
 export default function getSiblings(
   grid: number[][],
