@@ -1,8 +1,9 @@
+import { Config } from '../libs/config';
 import { writeFileSync } from '../libs/file-operations';
 import { Album } from '../shared/album';
 import { Slide } from '../shared/slide';
 
-export default function exportSlides(slides: Slide[]) {
+export default function exportSlides(slides: Slide[], config: Config) {
   const lines = [slides.length.toString()].concat(
     slides.map(
       (slide) =>
@@ -10,5 +11,5 @@ export default function exportSlides(slides: Slide[]) {
         (slide.imageTwo ? ` ${slide.imageOne.index}` : ''),
     ),
   );
-  writeFileSync('out/outfile.txt', lines.join('\n'));
+  writeFileSync(`out/${config.fileName}`, lines.join('\n'));
 }

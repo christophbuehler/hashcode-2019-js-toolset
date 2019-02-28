@@ -4,6 +4,7 @@ import { readFileSync, writeFileSync } from './file-operations';
 
 export interface Config {
   imageCount: number;
+  fileName: string;
   images: Image[];
 }
 
@@ -17,11 +18,11 @@ export interface Image {
 
 /**
  * Load a configuration object from a file.
- * @param path path to config file
+ * @param fileName path to config file
  */
-export function loadConfig(path: string): Config {
-  const bSmall = readFileSync(path);
-  const config = toConfig(bSmall);
+export function loadConfig(fileName: string): Config {
+  const bSmall = readFileSync(`assets/${fileName}`);
+  const config = toConfig(bSmall, fileName);
   return config;
 }
 
@@ -29,7 +30,7 @@ export function loadConfig(path: string): Config {
  * Raw input to config.
  * @param raw raw input string from file
  */
-function toConfig(raw: string): Config {
+function toConfig(raw: string, fileName: string): Config {
   const lines = raw.split('\r\n');
   const imageCount = parseInt(lines[0], 10);
 
@@ -53,6 +54,7 @@ function toConfig(raw: string): Config {
     });
 
   return {
+    fileName,
     imageCount,
     images,
   };

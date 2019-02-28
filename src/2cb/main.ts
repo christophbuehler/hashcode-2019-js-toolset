@@ -15,7 +15,7 @@ export function main(config: Config) {
   const horizontalSlides = horizontalImages.map((image) => createSlide(image));
 
   console.log(chalk.red('Writing slides output.'));
-  exportSlides(horizontalSlides);
+  exportSlides(horizontalSlides, config);
 }
 
 export function createSlide(imageOne: Image, imageTwo?: Image): Slide {
