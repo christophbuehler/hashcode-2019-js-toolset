@@ -1,6 +1,5 @@
 import chalk from 'chalk';
-import { Config } from 'libs/config';
-// import { Config } from '../main';
+import { Config } from '../libs/config';
 
 export function main(config: Config) {
   const slices: Slice[] = [];

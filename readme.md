@@ -7,8 +7,8 @@ Starter project for the Google Hash Code 2019 competition.
 - TypeScript compilation.
 - Linting and code formatting (on save or `shift + alt + f`).
 - File handling (read and write).
-- jsnumpy\
-  https://www.npmjs.com/package/jsnumpy
+- numjs\
+  https://www.npmjs.com/package/numjs
 - Math.js\
   http://mathjs.org/
 - Testing (mocha & chai).\
