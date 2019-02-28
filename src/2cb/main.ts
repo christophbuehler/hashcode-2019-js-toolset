@@ -1,7 +1,10 @@
 import chalk from 'chalk';
+import { Config } from '../libs/config';
 import { isInt } from '../libs/is-int';
 
-export function main() {}
+export function main(config: Config) {
+  console.log(config);
+}
 
 /**
  * Get all valid shapes starting with this square (top left).

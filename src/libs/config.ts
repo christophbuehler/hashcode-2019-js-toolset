@@ -33,18 +33,20 @@ function toConfig(raw: string): Config {
 
   lines.splice(0, 1);
 
-  const images = lines.map((line) => {
-    const parts = line.split(' ');
-    const isVertical = parts[0] === 'V';
-    const tagCount = parseInt(parts[1], 10);
-    parts.splice(0, 2);
+  const images = lines
+    .filter((line) => line.trim() !== '')
+    .map((line) => {
+      const parts = line.split(' ');
+      const isVertical = parts[0] === 'V';
+      const tagCount = parseInt(parts[1], 10);
+      parts.splice(0, 2);
 
-    return {
-      isVertical,
-      tagCount,
-      tags: parts.sort(),
-    };
-  });
+      return {
+        isVertical,
+        tagCount,
+        tags: parts.sort(),
+      };
+    });
 
   return {
     imageCount,
