@@ -32,7 +32,7 @@ export default function getSiblings(
       )
       // transform to actual coordinates
       .map(({ x, y }) => ({ x: rootX + x, y: rootY + y }))
-      // out of bounds check
+      // out of bounds check (could be in separate function)
       .filter(({ x, y }) => x >= 0 && y >= 0 && y < rowCount && x < colCount)
       // add cell values to output
       .map(({ x, y }) => ({ x, y, value: grid[y][x] }))
