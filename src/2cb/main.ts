@@ -32,7 +32,7 @@ export function main(config: Config) {
 
 export function sortSlides(slides: Slide[], config: Config): Slide[] {
   if (config.fileName === 'b_lovely_landscapes.txt') {
-    slides = slides.slice(0, 20000);
+    slides = slides.slice(0, 5000);
   }
 
   /**
