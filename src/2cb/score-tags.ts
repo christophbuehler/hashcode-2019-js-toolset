@@ -1,5 +1,7 @@
+import getSameTags from './get-same-tags';
+
 export function scoreTags(tagsOne: string[], tagsTwo: string[]): number {
-  const sameTags = tagsOne.filter((tag: string) => tagsTwo.indexOf(tag) !== -1);
+  const sameTags = getSameTags(tagsOne, tagsTwo);
 
   const uniqueTagsOne = tagsOne.filter(
     (tag: string) => tagsTwo.indexOf(tag) === -1,

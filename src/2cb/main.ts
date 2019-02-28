@@ -1,8 +1,35 @@
-import { Config } from '../libs/config';
+import chalk from 'chalk';
+import { create } from 'domain';
+import exportSlides from '../2lt/export-slides';
+import { Config, Image } from '../libs/config';
 import { isInt } from '../libs/is-int';
+import { Slide } from '../shared/slide';
+import getSameTags from './get-same-tags';
 
 export function main(config: Config) {
-  console.log(config);
+  console.log(chalk.red('Creating slides.'));
+
+  // Erstellung von Slides.
+  const verticalImages = config.images.filter((image) => image.isVertical);
+  const horizontalImages = config.images.filter((image) => !image.isVertical);
+  const horizontalSlides = horizontalImages.map((image) => createSlide(image));
+
+  console.log(chalk.red('Writing slides output.'));
+  exportSlides(horizontalSlides);
+}
+
+export function createSlide(imageOne: Image, imageTwo?: Image): Slide {
+  if (imageTwo) {
+    return {
+      imageOne,
+      imageTwo,
+      tags: getSameTags(imageOne.tags, imageTwo.tags),
+    };
+  }
+  return {
+    imageOne,
+    tags: imageOne.tags,
+  };
 }
 
 /**
