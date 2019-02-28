@@ -22,7 +22,7 @@ export function main(config: Config) {
   console.log(chalk.red('Writing slides output.'));
 
   // const slides = sortSlides(horizontalSlides);
-  const slides = sortSlides(horizontalSlides.concat(verticalSlides));
+  const slides = sortSlides(horizontalSlides.concat(verticalSlides), config);
 
   const score = getTotalScore(slides);
   console.log(chalk.green(`You scored ${score} points. You are awsum!`));
@@ -30,18 +30,24 @@ export function main(config: Config) {
   exportSlides(slides, config);
 }
 
-export function sortSlides(slides: Slide[]): Slide[] {
+export function sortSlides(slides: Slide[], config: Config): Slide[] {
   /**
    * Get array of best or good matches.
    * @param slide slide to get best matches
    */
-  function getBestSlides(slide: Slide) {
-    const tags = slide.tags;
-    const sorted = slides
-      .filter((a) => !a.predecessor)
-      .find((a) => scoreTags(tags, a.tags) > 0);
-    return sorted ? [sorted] : [];
-  }
+  const getBestSlides =
+    config.fileName === 'b_lovely_landscapes.txt'
+      ? (slide: Slide) => {
+          const match = slides.find((a) => !a.predecessor);
+          return match ? [match] : [];
+        }
+      : (slide: Slide) => {
+          const tags = slide.tags;
+          const sorted = slides
+            .filter((a) => !a.predecessor)
+            .find((a) => scoreTags(tags, a.tags) > 0);
+          return sorted ? [sorted] : [];
+        };
 
   const len = slides.length;
   slides[0].predecessor = 'FIRST SLIDE' as any;
