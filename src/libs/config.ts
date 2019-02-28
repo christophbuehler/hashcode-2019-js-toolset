@@ -8,6 +8,8 @@ export interface Config {
 }
 
 export interface Image {
+  index: number;
+  usedInAlbum: boolean;
   tagCount: number;
   isVertical: boolean;
   tags: string[];
@@ -35,7 +37,7 @@ function toConfig(raw: string): Config {
 
   const images = lines
     .filter((line) => line.trim() !== '')
-    .map((line) => {
+    .map((line, i) => {
       const parts = line.split(' ');
       const isVertical = parts[0] === 'V';
       const tagCount = parseInt(parts[1], 10);
@@ -45,6 +47,8 @@ function toConfig(raw: string): Config {
         isVertical,
         tagCount,
         tags: parts.sort(),
+        index: i,
+        usedInAlbum: false,
       };
     });
 
