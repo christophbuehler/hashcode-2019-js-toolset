@@ -31,6 +31,10 @@ export function main(config: Config) {
 }
 
 export function sortSlides(slides: Slide[], config: Config): Slide[] {
+  if (config.fileName === 'b_lovely_landscapes.txt') {
+    slides = slides.slice(0, 20000);
+  }
+
   /**
    * Get array of best or good matches.
    * @param slide slide to get best matches
@@ -38,8 +42,11 @@ export function sortSlides(slides: Slide[], config: Config): Slide[] {
   const getBestSlides =
     config.fileName === 'b_lovely_landscapes.txt'
       ? (slide: Slide) => {
-          const match = slides.find((a) => !a.predecessor);
-          return match ? [match] : [];
+          const tags = slide.tags;
+          const sorted = slides
+            .filter((a) => !a.predecessor)
+            .find((a) => scoreTags(tags, a.tags) > 0);
+          return sorted ? [sorted] : [];
         }
       : (slide: Slide) => {
           const tags = slide.tags;
