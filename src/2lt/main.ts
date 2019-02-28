@@ -69,7 +69,7 @@ export function main(config: Config) {
   };
   const slideThree: Slide = {
     imageOne: imageF,
-    imageTwo: 78,
+    imageTwo: imageG,
     tags: ['x', 'y', 'z'],
   };
 
