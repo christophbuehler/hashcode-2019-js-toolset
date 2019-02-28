@@ -4,8 +4,7 @@ import * as mainChristoph from './2cb/main';
 import * as mainDaniel from './2dm/main';
 import * as mainLuca from './2lt/main';
 import { User, user } from './environment';
-import { chart } from './libs/charting';
-import { getConfig } from './libs/config';
+import { loadConfig } from './libs/config-operations';
 import './libs/extend-array';
 import * as mainShared from './shared/main';
 
@@ -15,11 +14,7 @@ console.log(
   ),
 );
 
-/**
- * Working with files:
- */
-
-const config = getConfig('assets/b_small.in');
+const config = loadConfig('assets/b_small.in');
 
 switch (user) {
   case User.DANIEL:
@@ -39,16 +34,3 @@ switch (user) {
     mainShared.main();
     break;
 }
-
-chart();
-
-/**
- * The sum of two values (for testing).
- * @param a val1
- * @param b val2
- */
-export function sum(a: number, b: number) {
-  return a + b;
-}
-
-// writeFileSync('out/test.txt', config);
