@@ -1,11 +1,10 @@
 import { expect } from 'chai';
 import 'mocha';
-import { main } from '../../src/2lt/main';
-import { getConfig } from '../../src/libs/config';
+import sumOfGrid from '../../src/2lt/sum-of-grid';
 
-describe('Primary Test 2lt for now', () => {
-  it('TestMe should work', () => {
-    main(getConfig('assets/b_small.in'));
-    // expect(testMe()).to.equal(59);
+describe('utils', () => {
+  it('test sum of grid', () => {
+    const grid = [[1, 2, 3, 4], [1, 6, 3, 4], [3, 2, 3, 4]];
+    expect(sumOfGrid(grid)).to.equal(36);
   });
 });

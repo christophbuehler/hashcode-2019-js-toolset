@@ -10,6 +10,4 @@ describe('test shapes', () => {
     expect(possibleShapesWithSize(5).length).to.equal(2);
     expect(possibleShapesWithSize(6).length).to.equal(4);
   });
-
-  it('slices for square');
 });
