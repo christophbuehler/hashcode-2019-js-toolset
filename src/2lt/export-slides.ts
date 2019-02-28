@@ -8,7 +8,7 @@ export default function exportSlides(slides: Slide[], config: Config) {
     slides.map(
       (slide) =>
         `${slide.imageOne.index}` +
-        (slide.imageTwo ? ` ${slide.imageOne.index}` : ''),
+        (slide.imageTwo ? ` ${slide.imageTwo.index}` : ''),
     ),
   );
   writeFileSync(`out/${config.fileName}`, lines.join('\n'));
