@@ -31,7 +31,8 @@ export function loadConfig(fileName: string): Config {
  * @param raw raw input string from file
  */
 function toConfig(raw: string, fileName: string): Config {
-  const lines = raw.split('\r\n');
+  let lines = raw.split('\r\n');
+  if (lines.length === 1) lines = raw.split('\n');
   const imageCount = parseInt(lines[0], 10);
 
   lines.splice(0, 1);
