@@ -5,6 +5,8 @@ import { Config, Image } from '../libs/config';
 import { isInt } from '../libs/is-int';
 import { Slide } from '../shared/slide';
 import getSameTags from './get-same-tags';
+import getTotalScore from './get-total-score';
+import { scoreTags } from './score-tags';
 
 export function main(config: Config) {
   console.log(chalk.red('Creating slides.'));
@@ -15,7 +17,51 @@ export function main(config: Config) {
   const horizontalSlides = horizontalImages.map((image) => createSlide(image));
 
   console.log(chalk.red('Writing slides output.'));
-  exportSlides(horizontalSlides, config);
+
+  const slides = sortSlides(horizontalSlides);
+
+  const score = getTotalScore(slides);
+  console.log(`You scored ${score} points. You are awsum!`);
+
+  exportSlides(slides, config);
+}
+
+export function sortSlides(slides: Slide[]): Slide[] {
+  /**
+   * Get array of best or good matches.
+   * @param slide slide to get best matches
+   */
+  function getBestSlides(slide: Slide) {
+    const tags = slide.tags;
+    const sorted = slides
+      .filter((a) => !a.predecessor)
+      .find((a) => scoreTags(tags, a.tags) > 3);
+    return sorted ? [sorted] : [];
+  }
+
+  const len = slides.length;
+  slides[0].predecessor = 'FIRST SLIDE' as any;
+  const arrangedSlides = [slides[0]];
+
+  do {
+    const currentSlide = arrangedSlides[arrangedSlides.length - 1];
+    const bestMatches = getBestSlides(currentSlide);
+    const newSlide = bestMatches.find((match: Slide) => !match.predecessor);
+
+    if (newSlide) {
+      newSlide.predecessor = currentSlide;
+      arrangedSlides.push(newSlide);
+    } else {
+      const unoccupiedSlide = slides.find((slide) => !slide.predecessor);
+      if (unoccupiedSlide) {
+        arrangedSlides.push(unoccupiedSlide);
+      } else {
+        console.log(chalk.magenta('Done sorty mi frend.'));
+      }
+    }
+  } while (arrangedSlides.length < len);
+
+  return arrangedSlides;
 }
 
 export function createSlide(imageOne: Image, imageTwo?: Image): Slide {
