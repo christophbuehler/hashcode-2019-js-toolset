@@ -10,6 +10,10 @@ export interface Config {
   squares: ndarray<string>;
 }
 
+/**
+ * Load a configuration object from a file
+ * @param path path to config file, the root is the projcet root so use 'assets/xyz' or something
+ */
 export function getConfig(path: string): Config {
   const bSmall = readFileSync(path); // 'assets/b_small.in');
   const config = toConfig(bSmall);
