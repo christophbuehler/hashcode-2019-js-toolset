@@ -5,4 +5,4 @@ export enum User {
   SHARED,
 }
 
-export const user: User = User.CHRISTOPH;
+export const user: User = User.LUCA;

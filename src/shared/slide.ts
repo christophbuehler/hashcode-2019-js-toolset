@@ -1,5 +1,7 @@
+import { Image } from '../libs/config';
+
 export interface Slide {
-  imageOne: number;
-  imageTwo: number;
+  imageOne: Image;
+  imageTwo?: Image;
   tags: string[];
 }
