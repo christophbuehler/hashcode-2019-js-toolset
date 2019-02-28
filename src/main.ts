@@ -16,10 +16,10 @@ console.log(
 
 const configNames = [
   'a_example.txt',
-  // 'b_lovely_landscapes.txt',
-  // 'c_memorable_moments.txt',
+  'b_lovely_landscapes.txt',
+  'c_memorable_moments.txt',
   'd_pet_pictures.txt',
-  // 'e_shiny_selfies.txt',
+  'e_shiny_selfies.txt',
 ];
 
 configNames.forEach((name: string) => run(loadConfig(name)));

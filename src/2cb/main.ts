@@ -1,11 +1,13 @@
 import chalk from 'chalk';
 import { create } from 'domain';
+import { extractVerticalPairs } from '../2dm/joinV1';
 import exportSlides from '../2lt/export-slides';
 import { Config, Image } from '../libs/config';
 import { isInt } from '../libs/is-int';
 import { Slide } from '../shared/slide';
 import getSameTags from './get-same-tags';
 import getTotalScore from './get-total-score';
+import getUniqueTags from './get-unique-tags';
 import { scoreTags } from './score-tags';
 
 export function main(config: Config) {
@@ -15,13 +17,15 @@ export function main(config: Config) {
   const verticalImages = config.images.filter((image) => image.isVertical);
   const horizontalImages = config.images.filter((image) => !image.isVertical);
   const horizontalSlides = horizontalImages.map((image) => createSlide(image));
+  const verticalSlides = extractVerticalPairs(verticalImages);
 
   console.log(chalk.red('Writing slides output.'));
 
-  const slides = sortSlides(horizontalSlides);
+  // const slides = sortSlides(horizontalSlides);
+  const slides = sortSlides(horizontalSlides.concat(verticalSlides));
 
   const score = getTotalScore(slides);
-  console.log(`You scored ${score} points. You are awsum!`);
+  console.log(chalk.green(`You scored ${score} points. You are awsum!`));
 
   exportSlides(slides, config);
 }
@@ -35,7 +39,7 @@ export function sortSlides(slides: Slide[]): Slide[] {
     const tags = slide.tags;
     const sorted = slides
       .filter((a) => !a.predecessor)
-      .find((a) => scoreTags(tags, a.tags) > 3);
+      .find((a) => scoreTags(tags, a.tags) > 1);
     return sorted ? [sorted] : [];
   }
 
@@ -66,10 +70,14 @@ export function sortSlides(slides: Slide[]): Slide[] {
 
 export function createSlide(imageOne: Image, imageTwo?: Image): Slide {
   if (imageTwo) {
+    const tagsOne = imageOne.tags;
+    const tagsTwo = imageTwo.tags;
+    const tags = getUniqueTags(tagsOne, tagsTwo).concat(tagsTwo);
+
     return {
       imageOne,
       imageTwo,
-      tags: getSameTags(imageOne.tags, imageTwo.tags),
+      tags,
     };
   }
   return {
