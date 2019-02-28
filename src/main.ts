@@ -14,7 +14,7 @@ console.log(
   ),
 );
 
-const config = loadConfig('assets/b_small.in');
+const config = loadConfig('assets/a_example.txt');
 
 switch (user) {
   case User.DANIEL:

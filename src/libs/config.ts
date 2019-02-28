@@ -3,11 +3,14 @@ import * as nj from 'numjs';
 import { readFileSync, writeFileSync } from './file-operations';
 
 export interface Config {
-  rowCount: number;
-  colCount: number;
-  minOfEach: number;
-  maxSquares: number;
-  squares: ndarray<string>;
+  imageCount: number;
+  images: Image[];
+}
+
+export interface Image {
+  tagCount: number;
+  isVertical: boolean;
+  tags: string[];
 }
 
 /**
@@ -25,20 +28,26 @@ export function loadConfig(path: string): Config {
  * @param raw raw input string from file
  */
 function toConfig(raw: string): Config {
-  const arr = raw.split('\r\n');
-  const header = arr[0].split(' ');
+  const lines = raw.split('\r\n');
+  const imageCount = parseInt(lines[0], 10);
 
-  arr.splice(0, 1);
+  lines.splice(0, 1);
 
-  const rowCount = parseInt(header[0], 10);
-  const colCount = parseInt(header[1], 10);
-  const dataOneDim = arr.join('').split('');
+  const images = lines.map((line) => {
+    const parts = line.split(' ');
+    const isVertical = parts[0] === 'V';
+    const tagCount = parseInt(parts[1], 10);
+    parts.splice(0, 2);
+
+    return {
+      isVertical,
+      tagCount,
+      tags: parts.sort(),
+    };
+  });
 
   return {
-    rowCount,
-    colCount,
-    minOfEach: parseInt(header[2], 10),
-    maxSquares: parseInt(header[3], 10),
-    squares: nj.array(dataOneDim).reshape(rowCount, colCount),
+    imageCount,
+    images,
   };
 }
