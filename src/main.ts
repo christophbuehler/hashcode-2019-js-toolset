@@ -21,6 +21,7 @@ console.log(
 const bSmall = readFileSync('assets/b_small.in');
 const config = toConfig(bSmall);
 
+console.log(chalk.red(`I AM ${user}`));
 switch (user) {
   case User.DANIEL:
     mainDaniel.main();

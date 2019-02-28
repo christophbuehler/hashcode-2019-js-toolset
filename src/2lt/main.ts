@@ -2,8 +2,6 @@ import chalk from 'chalk';
 import { Config } from '../main';
 
 export function main(config: Config) {
-  console.log(chalk.red('I AM LUCA'));
-
   const slices: Slice[] = [];
   const [colCount, rowCount] = config.squares.shape;
 
