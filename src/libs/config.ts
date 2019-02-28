@@ -12,7 +12,7 @@ export interface Config {
 
 /**
  * Load a configuration object from a file.
- * @param path path to config file, the root is the projcet root so use 'assets/xyz' or something
+ * @param path path to config file
  */
 export function loadConfig(path: string): Config {
   const bSmall = readFileSync(path);

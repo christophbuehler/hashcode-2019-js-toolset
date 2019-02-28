@@ -4,7 +4,7 @@ import * as mainChristoph from './2cb/main';
 import * as mainDaniel from './2dm/main';
 import * as mainLuca from './2lt/main';
 import { User, user } from './environment';
-import { loadConfig } from './libs/config-operations';
+import { loadConfig } from './libs/config';
 import './libs/extend-array';
 import * as mainShared from './shared/main';
 
