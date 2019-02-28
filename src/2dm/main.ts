@@ -1,6 +1,7 @@
 import chalk from 'chalk';
+import { Config } from '../libs/config';
 
-export function main() {
+export function main(config: Config) {
   console.log(chalk.red('I AM DANIEL'));
 }
 

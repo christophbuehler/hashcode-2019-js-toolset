@@ -19,7 +19,7 @@ const config = loadConfig('assets/a_example.txt');
 switch (user) {
   case User.DANIEL:
     console.log(chalk.blue('running code from daniel'));
-    mainDaniel.main();
+    mainDaniel.main(config);
     break;
   case User.LUCA:
     console.log(chalk.blue('running code from luca'));
@@ -27,7 +27,7 @@ switch (user) {
     break;
   case User.CHRISTOPH:
     console.log(chalk.blue('running code from christoph'));
-    mainChristoph.main();
+    mainChristoph.main(config);
     break;
   case User.SHARED:
     console.log(chalk.blue('running shared code'));
