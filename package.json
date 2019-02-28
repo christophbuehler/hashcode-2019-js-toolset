@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
+    "test2dm": "mocha -r ts-node/register test/2dm/**/*.spec.ts",
     "watch": "tsc --watch",
     "tslint": "tslint --project '.'",
     "run": "node dist/main"
